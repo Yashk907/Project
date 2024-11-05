@@ -65,10 +65,10 @@ fun Preview() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Screen(modifier: Modifier = Modifier) {
-    val gradient=Brush.radialGradient(
+    val gradient=Brush.radialGradient( //Background image
         colors = listOf(Color(0xFF3A1576), Color(0xFF21174A)),
-        center = Offset(500f, 200f),
-        radius = 700f
+        center = Offset(500f, 100f),
+        radius = 600f
     )
     Box(
         modifier = Modifier
@@ -116,15 +116,17 @@ fun Screen(modifier: Modifier = Modifier) {
                     .fillMaxHeight()
                     .background(brush = gradient)) {
                     Column {
-                        GoldCard(modifier= Modifier
-                            .fillMaxWidth()
-                            .fillMaxHeight(0.3f))
-
                         //List
                         LazyColumn(modifier= Modifier
                             .background(Color(0xFF1D1829))
                             .fillMaxHeight()
                         ) {
+                            item{
+                                GoldCard(modifier= Modifier
+                                    .fillMaxWidth()
+                                    .height(190.dp)   //Adjust the height of the card
+                                    .background(brush = gradient))
+                            }
                             item { ButtonRow(modifier.padding(vertical = 8.dp, horizontal = 4.dp)) }
                             item{Text(text = "Today",
                                 fontFamily = FontFamily(Font(R.font.inter_bold)),
@@ -158,20 +160,11 @@ fun Screen(modifier: Modifier = Modifier) {
                             }
                         }
                     }
-
                 }
-
-
             }
-
-
-
         }
     }
     }
-
-
-
 
 
 //extended icons in topbar
@@ -565,3 +558,11 @@ fun buttoncontent(text: String,
             fontSize = 11.sp)
     }
 }
+
+//goldcard prev
+//@Preview(showSystemUi = true)
+//@Composable
+//fun prev(){
+//    GoldCard(modifier = Modifier.fillMaxWidth()
+//        .height(300.dp))
+//}
