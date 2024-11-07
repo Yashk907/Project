@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Project2Theme {
-                Screen()
+                Screen2()
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.example.project2
 
 //import androidx.annotation.DrawableRes
+//import android.preference.PreferenceActivity.Header
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,6 +21,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -64,6 +66,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+//import kotlinx.coroutines.DefaultExecutor.key
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -94,9 +97,11 @@ fun Screen2(modifier: Modifier = Modifier) {
                     colors = listOf(Color(0xFF3A1576), Color(0xFF21174A)),
                     center = Offset(500f, 200f),
                     radius = 700f
-                ))
+                )
+            )
     ) {
-        LazyColumn (modifier=Modifier
+        val scrollState= rememberLazyListState()
+        LazyColumn (state=scrollState,modifier=Modifier
             .background(Color(0xFF1D1829))){
             item {
                 Row (modifier= Modifier
@@ -111,22 +116,32 @@ fun Screen2(modifier: Modifier = Modifier) {
                     extendedicon(img1 = R.drawable.gift, modifier = Modifier.fillMaxWidth()
                     )
                 } }
-            stickyHeader (){//it will not disappear after scroll it will stich at header
-                Tabs(
-                    modifier
-                        .background(brush = gradient2)
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.1f)
-
-                        .padding(top =15.dp))//tabs
+            stickyHeader { //it will not disappear after scroll it will stick at header
+               Tabscontent(
+                   modifier
+                       .background(brush = gradient2))
             }
             item {   GoldCard(modifier= Modifier
                 .fillMaxWidth()
                 .height(190.dp) //Adjust the height of the card
                 .background(brush = gradient))
-
             }
-            item { ButtonRow(modifier.padding(vertical = 8.dp, horizontal = 4.dp)) }
+            stickyHeader(key=2) {
+                if(scrollState.firstVisibleItemIndex>=3){
+                    Column {
+                        Tabscontent(
+                            modifier
+                                .background(brush = gradient2)
+                                .statusBarsPadding())
+                        ButtonRow(modifier.padding(vertical = 0.dp, horizontal = 4.dp)
+//                            .background(color = Color(0xFF1D1829))
+                        )
+                    }
+
+                }else{
+                    ButtonRow(modifier.padding(vertical = 8.dp, horizontal = 4.dp))
+                }
+                }
             item{Text(text = "Today",
                 fontFamily = FontFamily(Font(R.font.inter_bold)),
                 fontSize = 14.sp,
@@ -264,7 +279,16 @@ fun Screen(modifier: Modifier = Modifier) {
     }
     }
 
+//tabs
+@Composable
+fun Tabscontent(modifier: Modifier = Modifier) {
+    Tabs(
+        modifier
+            .fillMaxWidth()
+            .fillMaxHeight(0.1f)
 
+            .padding(top = 15.dp))
+}
 //extended icons in topbar
 @Composable
 fun extendedicon(img1 : Int,
@@ -596,21 +620,24 @@ fun ListCard(content : content,modifier: Modifier = Modifier) {
 //buttons
 @Composable
 fun ButtonRow(modifier: Modifier = Modifier) {
-    Row (modifier.fillMaxWidth()){
-        Statusbuttoncontent("Status",R.drawable.down_arrow,
-            modifier
-                .weight(0.33f)
-                .padding(5.dp))
-        buttoncontent("Statement",R.drawable.download,
-            modifier
-                .weight(0.33f)
-                .padding(5.dp))
-        buttoncontent("Filters",R.drawable.filter,
-            modifier
-                .weight(0.33f)
-                .padding(5.dp))
 
-    }
+        Row (modifier.fillMaxWidth()){
+            Statusbuttoncontent("Status",R.drawable.down_arrow,
+                modifier
+                    .weight(0.33f)
+                    .padding(5.dp))
+            buttoncontent("Statement",R.drawable.download,
+                modifier
+                    .weight(0.33f)
+                    .padding(5.dp))
+            buttoncontent("Filters",R.drawable.filter,
+                modifier
+                    .weight(0.33f)
+                    .padding(5.dp))
+
+        }
+
+
 }
 
 @Composable
