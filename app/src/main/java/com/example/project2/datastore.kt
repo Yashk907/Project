@@ -13,6 +13,21 @@ data class content(val Name :String,
 class datastore{
     val list = listOf(
         content("Manual Buy","7.00 PM","Sep 10",R.drawable.check,"20","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.check,"20","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.check,"20","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.check,"20","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.check,"20","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.check,"20","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.check,"20","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.clock,"200","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.clock,"200","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.clock,"200","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.clock,"200","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.clock,"200","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.clock,"200","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.clock,"200","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.clock,"200","0.0045"),
+        content("Manual Buy","7.00 PM","Sep 10",R.drawable.clock,"200","0.0045"),
         content("Manual Buy","7.00 PM","Sep 10",R.drawable.clock,"200","0.0045"),
 //        content("Manual Buy","7.00 PM","Sep 10",R.drawable.user,"695","0.0045")
     )

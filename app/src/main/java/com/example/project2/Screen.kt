@@ -1,6 +1,7 @@
 package com.example.project2
 
 //import androidx.annotation.DrawableRes
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -39,6 +41,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
@@ -47,6 +53,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -55,6 +63,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -62,6 +71,95 @@ fun Preview() {
     Screen()
 }
 
+//choosing one screen out of this two
+@OptIn(ExperimentalFoundationApi::class)
+@Preview(showSystemUi = true)
+@Composable
+fun Screen2(modifier: Modifier = Modifier) {
+    val gradient=Brush.radialGradient( //Background image
+        colors = listOf(Color(0xFF3A1576), Color(0xFF21174A)),
+        center = Offset(500f, 100f),
+        radius = 450f
+    )
+    val gradient2=Brush.radialGradient( //Background image
+        colors = listOf(Color(0xFF3A1576), Color(0xFF21174A)),
+        center = Offset(500f, 100f),
+        radius = 600f
+    )
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.radialGradient(
+                    colors = listOf(Color(0xFF3A1576), Color(0xFF21174A)),
+                    center = Offset(500f, 200f),
+                    radius = 700f
+                ))
+    ) {
+        LazyColumn (modifier=Modifier
+            .background(Color(0xFF1D1829))){
+            item {
+                Row (modifier= Modifier
+                    .background(brush = gradient2)
+                    .statusBarsPadding()
+                    .padding(vertical = 5.dp, horizontal = 20.dp)
+                ){
+                    texticon("VR",modifier = Modifier.fillMaxWidth(0.18f))
+                    Spacer(modifier = Modifier.fillMaxWidth(0.35f))
+                    icon(R.drawable.support,modifier = Modifier.fillMaxWidth(0.3f))
+                    Spacer(modifier=Modifier.fillMaxWidth(0.02f))
+                    extendedicon(img1 = R.drawable.gift, modifier = Modifier.fillMaxWidth()
+                    )
+                } }
+            stickyHeader (){//it will not disappear after scroll it will stich at header
+                Tabs(
+                    modifier
+                        .background(brush = gradient2)
+                        .fillMaxWidth()
+                        .fillMaxHeight(0.1f)
+
+                        .padding(top =15.dp))//tabs
+            }
+            item {   GoldCard(modifier= Modifier
+                .fillMaxWidth()
+                .height(190.dp) //Adjust the height of the card
+                .background(brush = gradient))
+
+            }
+            item { ButtonRow(modifier.padding(vertical = 8.dp, horizontal = 4.dp)) }
+            item{Text(text = "Today",
+                fontFamily = FontFamily(Font(R.font.inter_bold)),
+                fontSize = 14.sp,
+                textAlign = TextAlign.Start,
+                modifier=Modifier.padding(start = 10.dp),
+                color = Color.White)}
+            items(datastore().list){
+                    content->
+                ListCard(content)
+            }
+            item{Text(text = "Yesterday",
+                fontFamily = FontFamily(Font(R.font.inter_bold)),
+                fontSize = 14.sp,
+                modifier=Modifier.padding(start = 10.dp),
+                textAlign = TextAlign.Start,
+                color = Color.White)}
+            items(datastore().list){
+                    content->
+                ListCard(content)
+            }
+            item{Text(text = "4 October 2024",
+                fontFamily = FontFamily(Font(R.font.inter_bold)),
+                fontSize = 14.sp,
+                textAlign = TextAlign.Start,
+                modifier=Modifier.padding(start = 10.dp),
+                color = Color.White)}
+            items(datastore().list){
+                    content->
+                ListCard(content)
+            }
+        }
+    }
+}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Screen(modifier: Modifier = Modifier) {
@@ -116,16 +214,16 @@ fun Screen(modifier: Modifier = Modifier) {
                     .fillMaxHeight()
                     .background(brush = gradient)) {
                     Column {
+
                         //List
                         LazyColumn(modifier= Modifier
                             .background(Color(0xFF1D1829))
-                            .fillMaxHeight()
                         ) {
-                            item{
-                                GoldCard(modifier= Modifier
-                                    .fillMaxWidth()
-                                    .height(190.dp)   //Adjust the height of the card
-                                    .background(brush = gradient))
+                            item {   GoldCard(modifier= Modifier
+                                .fillMaxWidth()
+                                .height(190.dp) //Adjust the height of the card
+                                .background(brush = gradient))
+
                             }
                             item { ButtonRow(modifier.padding(vertical = 8.dp, horizontal = 4.dp)) }
                             item{Text(text = "Today",
@@ -566,3 +664,4 @@ fun buttoncontent(text: String,
 //    GoldCard(modifier = Modifier.fillMaxWidth()
 //        .height(300.dp))
 //}
+
