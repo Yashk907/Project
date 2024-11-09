@@ -1,16 +1,11 @@
 package com.example.project2
 
+import Screen1ViewModel
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.example.project2.presentation.Screen1
 import com.example.project2.ui.theme.Project2Theme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Project2Theme {
-                Screen2()
+                Screen1(screen1ViewModel = Screen1ViewModel())
             }
         }
     }
