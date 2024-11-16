@@ -19,6 +19,6 @@ fun SectionHeader(text : String,
         fontFamily = FontFamily(Font(R.font.inter_bold)),
         fontSize = 14.sp,
         textAlign = TextAlign.Start,
-        modifier= Modifier.padding(start = 10.dp),
+        modifier= Modifier.padding(start = 8.dp, bottom = 4.dp, top = 4.dp),
         color = Color.White)
 }

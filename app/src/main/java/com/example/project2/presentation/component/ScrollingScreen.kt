@@ -134,8 +134,29 @@ fun ScrollingScreen(viewModel: Screen1ViewModel,
                 if(viewModel.contentList2.isEmpty()){
                     //buttons
                 stickyHeader {
+                    if(scrollState.firstVisibleItemIndex>=3){
+                        Column {
+                            TabContent(screen1ViewModel = viewModel,
+                                modifier
+                                    .background(
+                                        brush = Brush.radialGradient( //Background image
+                                            colors = listOf(Color(0xFF3A1576), Color(0xFF21174A)),
+                                            center = Offset(500f, 100f),
+                                            radius = 600f
+                                        )
+                                    )
+                                    .statusBarsPadding())
+                            ButtonRow(onclickStatus = onclickStatus,
+                                modifier
+                                    .padding(vertical = 0.dp, horizontal = 4.dp)
+                                    .background(color = Color(0xFF1D1829))
+                            )
+                        }
+
+                    }else{
                         ButtonRow(onclickStatus = onclickStatus,
                             modifier.padding(vertical = 8.dp, horizontal = 4.dp))
+                    }
                 }
                     //shows the empty screen no transaction screen when list is empty
                     //change in datastore2 for now
@@ -144,6 +165,31 @@ fun ScrollingScreen(viewModel: Screen1ViewModel,
                         MarUpiEmptyScreen()
                     } }
                 }else{
+                    //buttons
+                    stickyHeader {
+                        if(scrollState.firstVisibleItemIndex>=3){
+                            Column {
+                                TabContent(screen1ViewModel = viewModel,
+                                    modifier
+                                        .background(
+                                            brush = Brush.radialGradient( //Background image
+                                                colors = listOf(Color(0xFF3A1576), Color(0xFF21174A)),
+                                                center = Offset(500f, 100f),
+                                                radius = 600f
+                                            )
+                                        )
+                                        .statusBarsPadding())
+                                ButtonRow(onclickStatus = onclickStatus,
+                                    modifier
+                                        .padding(vertical = 0.dp, horizontal = 4.dp)
+                                        .background(color = Color(0xFF1D1829))
+                                )
+                            }
+
+                        }else{
+                            ButtonRow(onclickStatus = onclickStatus,
+                                modifier.padding(vertical = 8.dp, horizontal = 4.dp))
+                        }}
                 item{
                     SectionHeader(text = "Today")
                 }
