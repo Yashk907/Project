@@ -7,5 +7,6 @@ data class Content(
     val date: String,
     val image: Int,
     val price: String,
-    val weight: String
+    val weight: String,
+    val state :String
 )

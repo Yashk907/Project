@@ -1,6 +1,3 @@
-package com.example.project2.presentation.component
-
-import Screen1ViewModel
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -16,7 +13,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,25 +24,24 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.project2.Data.model.MarUpiContent
 import com.example.project2.R
 import com.example.project2.data.model.Content
 
 @Preview
 @Composable
-private fun Previ() {
+private fun Screen2() {
     LazyColumn {
-        items( Screen1ViewModel().contentList){
+        items(Screen1ViewModel().contentList2){
             it->
-            ListCard(content = it)
+            MarUpiCardcontent(content = it)
         }
     }
-    
-   
+
 }
-//card of the list of screen one with Gold page
 @Composable
-fun ListCard(content : Content,
-             modifier: Modifier = Modifier) {
+fun MarUpiCardcontent (content: MarUpiContent,
+                   modifier: Modifier = Modifier) {
     Card(modifier = Modifier
         .fillMaxWidth()
         .padding(vertical = 10.dp, horizontal = 10.dp),
@@ -77,12 +72,18 @@ fun ListCard(content : Content,
                     color = Color.White,
                     fontFamily = FontFamily(Font(R.font.inter_bold)),
                     modifier = Modifier.align(Alignment.Start))
+                Text(text = "UPI ID : Something@gmail.com",
+                    fontSize = 12.sp,
+                    modifier = Modifier.padding(horizontal = 3.dp,
+                        vertical = 2.dp),
+                    fontFamily = FontFamily(Font(R.font.interrr)),
+                    color = Color.Gray,)
                 Spacer(modifier = Modifier.padding(vertical = 0.dp))
                 Row {
                     Image(painter = painterResource(content.image),
-                        contentDescription = "State of the card",
+                        contentDescription = "",
                         modifier = Modifier
-                            .size(12.dp)
+                            .size(14.dp)
                             .align(Alignment.CenterVertically))
                     Text(text = content.time,
                         fontSize = 12.sp,
@@ -107,6 +108,15 @@ fun ListCard(content : Content,
                 .fillMaxWidth()) {
                 Column(modifier = Modifier.align(Alignment.End)) {
                     Row {
+
+                        //Shows Receive image when payment is received
+                        if(content.PaymentState=="Receive"){
+                            Icon(painter = painterResource(id = R.drawable.recieved),
+                                contentDescription ="Sent" ,
+                                tint = Color(0xFFA488EE),
+                                modifier=Modifier.size(18.dp))
+                        }
+
                         Icon(painter = painterResource(id = R.drawable.rupee),
                             contentDescription ="",
                             tint = Color.White,
@@ -116,20 +126,15 @@ fun ListCard(content : Content,
                             fontSize = 14.sp,
                             fontFamily = FontFamily(Font(R.font.inter_bold)),
                             modifier = Modifier.align(Alignment.CenterVertically))
-                    }
-                }
-                Column(modifier = Modifier.align(Alignment.End)) {
-                    Row {
-                        Text(text = content.weight,
-                            color = Color.Gray,
-                            fontSize = 12.sp,
-                            fontFamily = FontFamily(Font(R.font.interrr))
-                        )
-                        Text(text = " gms",
-                            color = Color.Gray,
-                            fontSize = 12.sp,
-                            fontFamily = FontFamily(Font(R.font.interrr))
-                        )
+
+                        //Shows Sent image when payment is Sent
+                        if(content.PaymentState=="Sent"){
+                            Icon(painter = painterResource(id = R.drawable.sent),
+                                contentDescription = "sent",
+                                tint = Color.White,
+                                modifier=Modifier.size(18.dp))
+                        }
+
                     }
                 }
             }

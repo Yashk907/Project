@@ -52,7 +52,6 @@ fun BottomSheet(IsStatusButtonClicked:Boolean,
             bottomsheetState.bottomSheetState.expand()
         }
     }
-    Log.d("yash",IsStatusButtonClicked.toString())
     BottomSheetScaffold(
         scaffoldState = bottomsheetState,
         modifier = Modifier.fillMaxHeight(),
