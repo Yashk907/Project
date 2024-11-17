@@ -1,3 +1,4 @@
+
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -28,33 +29,22 @@ import com.example.project2.R
 @Preview
 @Composable
 private fun Preview1() {
-    successChip(
+    successChipNoIcon(
         LabelColor = Color(0xFF241F33),
-        iconImage =R.drawable.check, Icontint = Color(0xFF54D68A),
         textColor = Color(0xFF54D68A), text = "Success")
 }
 
 @Composable
-fun successChip(LabelColor : Color=Color.Transparent,
-                         iconImage : Int,
-                         text : String,
-                Icontint : Color,
-                         textColor : Color = Color.White,
-                         modifier: Modifier = Modifier) {
+fun successChipNoIcon(LabelColor : Color=Color.Transparent,
+                text : String,
+                textColor : Color = Color.White,
+                modifier: Modifier = Modifier) {
     Card (colors = CardDefaults.cardColors(LabelColor),
         shape = RoundedCornerShape(3.dp),
         modifier = Modifier.height(24.dp)){
         Row (modifier= Modifier
             .align(Alignment.CenterHorizontally)
             .padding(vertical = 4.dp, horizontal = 8.dp)){
-            Icon(painter = painterResource(iconImage),
-                contentDescription = "Icon",
-                tint = Icontint,
-                modifier = Modifier
-                    .size(12.dp)
-                    .align(Alignment.CenterVertically)
-            )
-            Spacer(modifier = Modifier.padding(horizontal = 6.dp))
             Text(text = text,
                 fontFamily = FontFamily(Font(R.font.interrr)),
                 color = textColor,
@@ -68,32 +58,21 @@ fun successChip(LabelColor : Color=Color.Transparent,
 @Preview
 @Composable
 private fun Preview2() {
-    InformationChip(LabelColor = Color(0xFF241F33),
-        iconImage =R.drawable.info, Icontint = Color(0xFF66B3FF),
+    InformationChipNoIcon(labelColor = Color(0xFF241F33),
         textColor = Color(0xFF66B3FF), text = "Information")
 }
 
 @Composable
-fun InformationChip(LabelColor : Color=Color.Transparent,
-                iconImage : Int,
-                text : String,
-                Icontint : Color,
-                textColor : Color = Color.White,
-                modifier: Modifier = Modifier) {
-    Card (colors = CardDefaults.cardColors(LabelColor),
+fun InformationChipNoIcon(labelColor : Color=Color.Transparent,
+                    text : String,
+                    textColor : Color = Color.White,
+                    modifier: Modifier = Modifier) {
+    Card (colors = CardDefaults.cardColors(labelColor),
         shape = RoundedCornerShape(3.dp),
         modifier = Modifier.height(24.dp)){
         Row (modifier= Modifier
             .align(Alignment.CenterHorizontally)
             .padding(vertical = 4.dp, horizontal = 8.dp)){
-            Icon(painter = painterResource(iconImage),
-                contentDescription = "Icon",
-                tint = Icontint,
-                modifier = Modifier
-                    .size(10.dp)
-                    .align(Alignment.CenterVertically)
-            )
-            Spacer(modifier = Modifier.padding(horizontal = 6.dp))
             Text(text = text,
                 fontFamily = FontFamily(Font(R.font.interrr)),
                 color = textColor,
@@ -107,32 +86,21 @@ fun InformationChip(LabelColor : Color=Color.Transparent,
 @Preview
 @Composable
 private fun Preview3() {
-    FailedChip(LabelColor = Color(0xFF241F33),
-        iconImage =R.drawable.cross1, Icontint = Color(0xFFDC7D8E),
+    FailedChipNoIcon(LabelColor = Color(0xFF241F33),
         textColor = Color(0xFFDC7D8E), text = "Failed")
 }
 
 @Composable
-fun FailedChip(LabelColor : Color=Color.Transparent,
-                    iconImage : Int,
-                    text : String,
-                    Icontint : Color,
-                    textColor : Color = Color.White,
-                    modifier: Modifier = Modifier) {
+fun FailedChipNoIcon(LabelColor : Color=Color.Transparent,
+               text : String,
+               textColor : Color = Color.White,
+               modifier: Modifier = Modifier) {
     Card (colors = CardDefaults.cardColors(LabelColor),
         shape = RoundedCornerShape(3.dp),
         modifier = Modifier.height(24.dp)){
         Row (modifier= Modifier
             .align(Alignment.CenterHorizontally)
             .padding(vertical = 4.dp, horizontal = 8.dp)){
-            Icon(painter = painterResource(iconImage),
-                contentDescription = "Icon",
-                tint = Icontint,
-                modifier = Modifier
-                    .size(10.dp)
-                    .align(Alignment.CenterVertically)
-            )
-            Spacer(modifier = Modifier.padding(horizontal = 6.dp))
             Text(text = text,
                 fontFamily = FontFamily(Font(R.font.interrr)),
                 color = textColor,
@@ -146,34 +114,23 @@ fun FailedChip(LabelColor : Color=Color.Transparent,
 @Preview
 @Composable
 private fun Preview4() {
-Processchip(LabelColor = Color(0xFF241F33),
-      text ="Processing" ,
-    ShowIndicator = true,
-    textColor = Color(0xFFFFAD5C),
-    LoaderColor =  Color(0xFFFFAD5C) )
+    ProcesschipNoIcon(LabelColor = Color(0xFF241F33),
+        text ="Processing" ,
+        textColor = Color(0xFFFFAD5C),
+         )
 }
 
 @Composable
-fun Processchip(LabelColor : Color=Color.Transparent,
-               text : String,
-                ShowIndicator: Boolean,
-                LoaderColor : Color,
-               textColor : Color = Color.White,
-               modifier: Modifier = Modifier) {
+fun ProcesschipNoIcon(LabelColor : Color=Color.Transparent,
+                text : String,
+                textColor : Color = Color.White,
+                modifier: Modifier = Modifier) {
     Card (colors = CardDefaults.cardColors(LabelColor),
         shape = RoundedCornerShape(3.dp),
         modifier = Modifier.height(24.dp)){
         Row (modifier= Modifier
             .align(Alignment.CenterHorizontally)
             .padding(vertical = 4.dp, horizontal = 8.dp)){
-            if (ShowIndicator){
-                CircularProgressIndicator(modifier= Modifier
-                    .size(10.dp)
-                    .align(Alignment.CenterVertically),
-                    color = LoaderColor,
-                    strokeWidth = 1.dp)
-                Spacer(modifier = Modifier.padding(horizontal = 6.dp))
-            }
             Text(text = text,
                 fontFamily = FontFamily(Font(R.font.interrr)),
                 color = textColor,
@@ -183,15 +140,14 @@ fun Processchip(LabelColor : Color=Color.Transparent,
     }
 }
 
-//Chips with transparent background 
+//Chips with transparent background
 //For this just dont give any paqrameter to color as the default param is Transparent color
 
 //success chip with transparent back
 @Preview
 @Composable
 private fun Preview5() {
-    successChip(
-        iconImage =R.drawable.check, Icontint = Color(0xFF54D68A),
+    successChipNoIcon(
         textColor = Color(0xFF54D68A), text = "Success")
 }
 
@@ -199,16 +155,14 @@ private fun Preview5() {
 @Preview
 @Composable
 private fun Preview6() {
-    InformationChip(
-        iconImage =R.drawable.info, Icontint = Color(0xFF66B3FF),
+    InformationChipNoIcon(
         textColor = Color(0xFF66B3FF), text = "Information")
 }
 //Failed chip with transparent back
 @Preview
 @Composable
 private fun Preview7() {
-    FailedChip(
-        iconImage =R.drawable.cross1, Icontint = Color(0xFFDC7D8E),
+    FailedChipNoIcon(
         textColor = Color(0xFFDC7D8E), text = "Failed")
 }
 
@@ -216,9 +170,7 @@ private fun Preview7() {
 @Preview
 @Composable
 private fun Preview8() {
-    Processchip(
+    ProcesschipNoIcon(
         text ="Processing" ,
-        ShowIndicator = true,
-        textColor = Color(0xFFFFAD5C),
-        LoaderColor =  Color(0xFFFFAD5C) )
+        textColor = Color(0xFFFFAD5C))
 }
