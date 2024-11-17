@@ -24,28 +24,13 @@ import com.example.project2.R
 //Labels
 //labels with icon
 
-@Preview(showSystemUi = true)
+@Preview
 @Composable
-fun Preview(modifier: Modifier = Modifier) {
-    Column (modifier.padding(10.dp)){
-        RoundedLabelWithIcon(LabelColor = Color(0xFF8D54D6),
-            R.drawable.tag,
-            "EXCLUSIVE OFFER")
-        Spacer(modifier = Modifier.padding(vertical = 10.dp))
-        HalfRoundedLabelWithIcon(LabelColor = Color(0xFF8D54D6),
-            R.drawable.tag,
-            "EXCLUSIVE OFFER")
-        Spacer(modifier = Modifier.padding(vertical = 10.dp))
-        RoundedLabel(LabelColor = Color(0xFF8D54D6),
-            "EXCLUSIVE OFFER")
-        Spacer(modifier = Modifier.padding(vertical = 10.dp))
-        HalfRoundedLabel(LabelColor = Color(0xFF8D54D6),
-            "EXCLUSIVE OFFER")
-
-    }
-
+private fun Preview1() {
+    RoundedLabelWithIcon(LabelColor = Color(0xFF8D54D6),
+        R.drawable.tag,
+        "EXCLUSIVE OFFER")
 }
-
 @Composable
 fun RoundedLabelWithIcon(LabelColor : Color,
                          iconImage : Int,
@@ -74,7 +59,16 @@ fun RoundedLabelWithIcon(LabelColor : Color,
     }
 }
 
+
 //half rounded label
+
+@Preview
+@Composable
+private fun Preview2() {
+    HalfRoundedLabelWithIcon(LabelColor = Color(0xFF8D54D6),
+        R.drawable.tag,
+        "EXCLUSIVE OFFER")
+}
 @Composable
 fun HalfRoundedLabelWithIcon(LabelColor : Color,
                          iconImage : Int,
@@ -108,6 +102,13 @@ fun HalfRoundedLabelWithIcon(LabelColor : Color,
 }
 
 //RoundedLabel with no leading icon
+
+@Preview
+@Composable
+private fun Preview3() {
+    RoundedLabel(LabelColor = Color(0xFF8D54D6),
+        "EXCLUSIVE OFFER")
+}
 @Composable
 fun RoundedLabel(LabelColor : Color,
                          text : String,
@@ -127,7 +128,15 @@ fun RoundedLabel(LabelColor : Color,
     }
 }
 
+
 //halfRounded label without leading icon
+@Preview
+@Composable
+private fun Preview4() {
+    HalfRoundedLabel(LabelColor = Color(0xFF8D54D6),
+        "EXCLUSIVE OFFER")
+
+}
 @Composable
 fun HalfRoundedLabel(LabelColor : Color,
                              text : String,
