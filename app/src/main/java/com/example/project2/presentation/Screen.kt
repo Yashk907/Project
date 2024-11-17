@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.project2.presentation.component.BottomSheet
 
 //Preview
-@Preview(showBackground = true, showSystemUi = true)
+ @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun Preview() {
     Screen1(screen1ViewModel = Screen1ViewModel())
