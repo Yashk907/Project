@@ -271,3 +271,134 @@ fun AnchoredOneLineToast(ToastColor: Color,
         }
     }
 }
+
+@Preview
+@Composable
+private fun Preview5() {
+    FloatingMultiLineToast(ToastColor = Color(0xFFE2D4F5),
+        Heading ="Banner heading" , image = R.drawable.infopurple,
+        Description = "You cannot make an internationnal transaction while your " +
+                "internation settings are turn off",
+        HeadingColor =Color(0xFF5A21A3),
+        DescriptionColor = Color(0xFF43197A))
+}
+
+//Anchored multi line Toast
+@Preview
+@Composable
+private fun Preview6() {
+    AnchoredMultiLineToast(ToastColor = Color(0xFFE2D4F5),
+        Heading ="Banner heading" , image = R.drawable.infopurple,
+        Description = "You cannot make an internationnal transaction while your " +
+                "internation settings are turn off",
+        HeadingColor =Color(0xFF5A21A3),
+        DescriptionColor = Color(0xFF43197A))
+}
+
+//Floating One line Toast
+@Preview
+@Composable
+private fun Preview7() {
+    FloatingOneLineToast(ToastColor = Color(0xFFE2D4F5),
+        Heading ="Message" , image = R.drawable.infopurple,
+        HeadingColor =Color(0xFF5A21A3),
+        CloseButtonColor  = Color(0xFF43197A))
+}
+
+//Anchored One line Toast
+@Preview
+@Composable
+private fun Preview8() {
+    AnchoredOneLineToast(ToastColor = Color(0xFFE2D4F5),
+        Heading ="Message" , image = R.drawable.infopurple,
+        HeadingColor =Color(0xFF5A21A3),
+        CloseButtonColor  = Color(0xFF43197A))
+}
+
+
+@Preview
+@Composable
+private fun Preview9() {
+    FloatingMultiLineToast(ToastColor = Color(0xFFFDF3D6),
+        Heading ="Banner heading" , image = R.drawable.caution,
+        Description = "You cannot make an internationnal transaction while your " +
+                "internation settings are turn off",
+        HeadingColor =Color(0xFF92761D),
+        DescriptionColor = Color(0xFF624E13))
+}
+
+//Anchored multi line Toast
+@Preview
+@Composable
+private fun Preview10() {
+    AnchoredMultiLineToast(ToastColor = Color(0xFFFDF3D6),
+        Heading ="Banner heading" , image = R.drawable.caution,
+        Description = "You cannot make an internationnal transaction while your " +
+                "internation settings are turn off",
+        HeadingColor =Color(0xFF92761D),
+        DescriptionColor = Color(0xFF624E13))
+}
+
+//Floating One line Toast
+@Preview
+@Composable
+private fun Preview11() {
+    FloatingOneLineToast(ToastColor = Color(0xFFFDF3D6),
+        Heading ="Message" , image =R.drawable.caution,
+        HeadingColor =Color(0xFF92761D),
+        CloseButtonColor =Color(0xFF624E13))
+}
+
+//Anchored One line Toast
+@Preview
+@Composable
+private fun Preview12(){
+    AnchoredOneLineToast(ToastColor = Color(0xFFFDF3D6),
+        Heading ="Message" , image =R.drawable.caution,
+        HeadingColor =Color(0xFF92761D),
+        CloseButtonColor =Color(0xFF624E13))
+}
+
+
+@Preview
+@Composable
+private fun Preview13() {
+    FloatingMultiLineToast(ToastColor = Color(0xFFF3D4D9),
+        Heading ="Banner heading" , image = R.drawable.crossred,
+        Description = "You cannot make an internationnal transaction while your " +
+                "internation settings are turn off",
+        HeadingColor =Color(0xFFC42742),
+        DescriptionColor = Color(0xFF9D1F35))
+}
+
+//Anchored multi line Toast
+@Preview
+@Composable
+private fun Preview14() {
+    AnchoredMultiLineToast(ToastColor = Color(0xFFF3D4D9),
+        Heading ="Banner heading" , image = R.drawable.crossred,
+        Description = "You cannot make an internationnal transaction while your " +
+                "internation settings are turn off",
+        HeadingColor =Color(0xFFC42742),
+        DescriptionColor = Color(0xFF9D1F35))
+}
+
+//Floating One line Toast
+@Preview
+@Composable
+private fun Preview15() {
+    FloatingOneLineToast(ToastColor = Color(0xFFF3D4D9),
+        Heading ="Message" , image =R.drawable.crossred,
+        HeadingColor =Color(0xFFC42742),
+        CloseButtonColor =Color(0xFF9D1F35))
+}
+
+//Anchored One line Toast
+@Preview
+@Composable
+private fun Preview16(){
+    AnchoredOneLineToast(ToastColor = Color(0xFFF3D4D9),
+        Heading ="Message" , image =R.drawable.crossred,
+        HeadingColor =Color(0xFFC42742),
+        CloseButtonColor =Color(0xFF9D1F35))
+}
