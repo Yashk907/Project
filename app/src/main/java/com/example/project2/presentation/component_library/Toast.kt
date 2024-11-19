@@ -12,8 +12,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -24,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.PathNode
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -34,34 +38,64 @@ import androidx.compose.ui.unit.sp
 import com.example.project2.R
 
 //Toast
-//Floating multi line Toast
-@Preview
-@Composable
-private fun Preview1() {
-FloatingMultiLineToast(ToastColor = Color(0xFFD4F5E2),
-    Heading ="Banner heading" , image = R.drawable.success,
-    Description = "You cannot make an internationnal transaction while your " +
-            "internation settings are turn off",
-    HeadingColor =Color(0xFF21A357),
-    DescriptionColor = Color(0xFF197A41))
+enum class ToastType(){
+    SUCESS,
+    INFORMATION,
+    CAUTION,
+    FAILED
 }
 
+/**
+ * Composable function
+ * @param type The type of the toast (e.g., SUCCESS, INFORMATION, FAILED, CAUTION), determining the icon displayed.
+ * @param ToastColor The background color of the toast card.
+ * @param Heading The main heading text displayed at the top of the toast.
+ * @param Description A detailed description or message displayed below the heading.
+ * @param HeadingColor The color of the heading text and the icon associated with the toast type.
+ * @param DescriptionColor The color of the description text and other elements like settings text or close icon.
+ * @param modifier Modifier for applying layout, styling, or event handlers to the toast container.
+ */
 @Composable
-fun FloatingMultiLineToast(ToastColor: Color,
+fun FloatingMultiLineToast(type: ToastType,
+                           ToastColor: Color,
                            Heading :String,
                            Description : String,
-                           image : Int,
                            HeadingColor : Color,
                            DescriptionColor : Color,
                            modifier: Modifier = Modifier) {
         Card (colors = CardDefaults.cardColors(ToastColor)){
             Row(modifier=Modifier.padding(horizontal = 16.dp,
                 vertical = 16.dp)) {
-                Image(painter = painterResource(image),
-                    contentDescription = "image",
-                    modifier= Modifier
-                        .size(18.dp)
-                        .fillMaxWidth(0.3f))
+                when(type){
+                 ToastType.SUCESS->
+                     Icon(imageVector = Icons.Default.CheckCircle,
+                         contentDescription = "image",
+                         tint = HeadingColor,
+                         modifier= Modifier
+                             .size(18.dp)
+                             .fillMaxWidth(0.3f))
+                    ToastType.INFORMATION->
+                        Icon(imageVector = Icons.Default.Info,
+                            contentDescription = "image",
+                            tint = HeadingColor,
+                            modifier= Modifier
+                                .size(18.dp)
+                                .fillMaxWidth(0.3f))
+                    ToastType.FAILED->
+                        CloseWithCircleIcon(iconTint = HeadingColor,
+                            crossIconTint = Color.White,
+                            modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+                    ToastType.CAUTION->
+                        Icon(imageVector = Icons.Default.Warning,
+                            tint = HeadingColor,
+                            contentDescription = "image",
+                            modifier= Modifier
+                                .size(18.dp)
+                                .fillMaxWidth(0.3f))
+                }
+
                 Column (modifier = Modifier
                     .padding(
                         start = 8.dp,
@@ -104,12 +138,27 @@ fun FloatingMultiLineToast(ToastColor: Color,
         }
 }
 
+//Floating multi line Toast
+@Preview
+@Composable
+private fun Preview1() {
+    FloatingMultiLineToast(type = ToastType.SUCESS,
+        ToastColor = Color(0xFFD4F5E2),
+        Heading ="Banner heading" ,
+        Description = "You cannot make an internationnal transaction while your " +
+                "internation settings are turn off",
+        HeadingColor =Color(0xFF21A357),
+        DescriptionColor = Color(0xFF197A41))
+}
+
 //Anchored multi line Toast
 @Preview
 @Composable
 private fun Preview2() {
-    AnchoredMultiLineToast(ToastColor = Color(0xFFD4F5E2),
-        Heading ="Banner heading" , image = R.drawable.success,
+    AnchoredMultiLineToast(
+        type = ToastType.SUCESS,
+        ToastColor = Color(0xFFD4F5E2),
+        Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
         HeadingColor =Color(0xFF21A357),
@@ -117,22 +166,48 @@ private fun Preview2() {
 }
 
 @Composable
-fun AnchoredMultiLineToast(ToastColor: Color,
+fun AnchoredMultiLineToast(type: ToastType,
+                           ToastColor: Color,
                            Heading :String,
                            Description : String,
-                           image : Int,
                            HeadingColor : Color,
                            DescriptionColor : Color,
                            modifier: Modifier = Modifier) {
-    Card (shape = RoundedCornerShape(0.dp),
-        colors = CardDefaults.cardColors(ToastColor)){
+    Card (colors = CardDefaults.cardColors(ToastColor),
+        shape = RoundedCornerShape(0.dp)
+    ){
         Row(modifier=Modifier.padding(horizontal = 16.dp,
             vertical = 16.dp)) {
-            Image(painter = painterResource(image),
-                contentDescription = "image",
-                modifier= Modifier
-                    .size(18.dp)
-                    .fillMaxWidth(0.3f))
+            when(type){
+                ToastType.SUCESS->
+                    Icon(imageVector = Icons.Default.CheckCircle,
+                        contentDescription = "image",
+                        tint = HeadingColor,
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+                ToastType.INFORMATION->
+                    Icon(imageVector = Icons.Default.Info,
+                        contentDescription = "image",
+                        tint = HeadingColor,
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+                ToastType.FAILED->
+                    CloseWithCircleIcon(iconTint = HeadingColor,
+                        crossIconTint = Color.White,
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+                ToastType.CAUTION->
+                    Icon(imageVector = Icons.Default.Warning,
+                        tint = HeadingColor,
+                        contentDescription = "image",
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+            }
+
             Column (modifier = Modifier
                 .padding(
                     start = 8.dp,
@@ -175,31 +250,58 @@ fun AnchoredMultiLineToast(ToastColor: Color,
     }
 }
 
+
 //Floating One line Toast
 @Preview
 @Composable
 private fun Preview3() {
-    FloatingOneLineToast(ToastColor = Color(0xFFD4F5E2),
-        Heading ="Message" , image = R.drawable.success,
+    FloatingOneLineToast(type = ToastType.SUCESS,
+        ToastColor = Color(0xFFD4F5E2),
+        Heading ="Message" ,
         HeadingColor =Color(0xFF21A357),
         CloseButtonColor = Color(0xFF197A41))
 }
 
 @Composable
-fun FloatingOneLineToast(ToastColor: Color,
+fun FloatingOneLineToast(type : ToastType,
+                         ToastColor: Color,
                            Heading :String,
-                           image : Int,
                          CloseButtonColor : Color,
                            HeadingColor : Color,
                            modifier: Modifier = Modifier) {
     Card (colors = CardDefaults.cardColors(ToastColor)){
         Row(modifier=Modifier.padding(horizontal = 16.dp,
             vertical = 12.dp)) {
-            Image(painter = painterResource(image),
-                contentDescription = "image",
-                modifier= Modifier
-                    .size(18.dp)
-                    .fillMaxWidth(0.3f))
+            when(type){
+                ToastType.SUCESS->
+                    Icon(imageVector = Icons.Default.CheckCircle,
+                        contentDescription = "image",
+                        tint = HeadingColor,
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+                ToastType.INFORMATION->
+                    Icon(imageVector = Icons.Default.Info,
+                        contentDescription = "image",
+                        tint = HeadingColor,
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+                ToastType.FAILED->
+                    CloseWithCircleIcon(iconTint = HeadingColor,
+                        crossIconTint = Color.White,
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+                ToastType.CAUTION->
+                    Icon(imageVector = Icons.Default.Warning,
+                        tint = HeadingColor,
+                        contentDescription = "image",
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+            }
+
             Column (modifier = Modifier
                 .padding(
                     start = 8.dp,
@@ -227,28 +329,55 @@ fun FloatingOneLineToast(ToastColor: Color,
 @Preview
 @Composable
 private fun Preview4() {
-    AnchoredOneLineToast(ToastColor = Color(0xFFD4F5E2),
-        Heading ="Message" , image = R.drawable.success,
+    AnchoredOneLineToast(ToastType.SUCESS,
+        ToastColor = Color(0xFFD4F5E2),
+        Heading ="Message" ,
         HeadingColor =Color(0xFF21A357),
         CloseButtonColor = Color(0xFF197A41))
 }
 
 @Composable
-fun AnchoredOneLineToast(ToastColor: Color,
-                           Heading :String,
-                           image : Int,
+fun AnchoredOneLineToast(type : ToastType,
+                         ToastColor: Color,
+                         Heading :String,
                          CloseButtonColor : Color,
-                           HeadingColor : Color,
-                           modifier: Modifier = Modifier) {
-    Card (shape = RoundedCornerShape(0.dp),
-        colors = CardDefaults.cardColors(ToastColor)){
+                         HeadingColor : Color,
+                         modifier: Modifier = Modifier) {
+    Card (colors = CardDefaults.cardColors(ToastColor),
+        shape = RoundedCornerShape(0.dp)
+    ){
         Row(modifier=Modifier.padding(horizontal = 16.dp,
             vertical = 12.dp)) {
-            Image(painter = painterResource(image),
-                contentDescription = "image",
-                modifier= Modifier
-                    .size(18.dp)
-                    .fillMaxWidth(0.3f))
+            when(type){
+                ToastType.SUCESS->
+                    Icon(imageVector = Icons.Default.CheckCircle,
+                        contentDescription = "image",
+                        tint = HeadingColor,
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+                ToastType.INFORMATION->
+                    Icon(imageVector = Icons.Default.Info,
+                        contentDescription = "image",
+                        tint = HeadingColor,
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+                ToastType.FAILED->
+                    CloseWithCircleIcon(iconTint = HeadingColor,
+                        crossIconTint = Color.White,
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+                ToastType.CAUTION->
+                    Icon(imageVector = Icons.Default.Warning,
+                        tint = HeadingColor,
+                        contentDescription = "image",
+                        modifier= Modifier
+                            .size(18.dp)
+                            .fillMaxWidth(0.3f))
+            }
+
             Column (modifier = Modifier
                 .padding(
                     start = 8.dp,
@@ -272,11 +401,13 @@ fun AnchoredOneLineToast(ToastColor: Color,
     }
 }
 
+//All previews
 @Preview
 @Composable
 private fun Preview5() {
-    FloatingMultiLineToast(ToastColor = Color(0xFFE2D4F5),
-        Heading ="Banner heading" , image = R.drawable.infopurple,
+    FloatingMultiLineToast(type = ToastType.INFORMATION,
+        ToastColor = Color(0xFFE2D4F5),
+        Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
         HeadingColor =Color(0xFF5A21A3),
@@ -287,8 +418,8 @@ private fun Preview5() {
 @Preview
 @Composable
 private fun Preview6() {
-    AnchoredMultiLineToast(ToastColor = Color(0xFFE2D4F5),
-        Heading ="Banner heading" , image = R.drawable.infopurple,
+    AnchoredMultiLineToast(type = ToastType.INFORMATION, ToastColor = Color(0xFFE2D4F5),
+        Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
         HeadingColor =Color(0xFF5A21A3),
@@ -299,8 +430,8 @@ private fun Preview6() {
 @Preview
 @Composable
 private fun Preview7() {
-    FloatingOneLineToast(ToastColor = Color(0xFFE2D4F5),
-        Heading ="Message" , image = R.drawable.infopurple,
+    FloatingOneLineToast(type = ToastType.INFORMATION, ToastColor = Color(0xFFE2D4F5),
+        Heading ="Message" ,
         HeadingColor =Color(0xFF5A21A3),
         CloseButtonColor  = Color(0xFF43197A))
 }
@@ -309,8 +440,9 @@ private fun Preview7() {
 @Preview
 @Composable
 private fun Preview8() {
-    AnchoredOneLineToast(ToastColor = Color(0xFFE2D4F5),
-        Heading ="Message" , image = R.drawable.infopurple,
+    AnchoredOneLineToast(type = ToastType.INFORMATION,
+        ToastColor = Color(0xFFE2D4F5),
+        Heading ="Message" ,
         HeadingColor =Color(0xFF5A21A3),
         CloseButtonColor  = Color(0xFF43197A))
 }
@@ -319,8 +451,9 @@ private fun Preview8() {
 @Preview
 @Composable
 private fun Preview9() {
-    FloatingMultiLineToast(ToastColor = Color(0xFFFDF3D6),
-        Heading ="Banner heading" , image = R.drawable.caution,
+    FloatingMultiLineToast(type = ToastType.CAUTION,
+        ToastColor = Color(0xFFFDF3D6),
+        Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
         HeadingColor =Color(0xFF92761D),
@@ -331,8 +464,9 @@ private fun Preview9() {
 @Preview
 @Composable
 private fun Preview10() {
-    AnchoredMultiLineToast(ToastColor = Color(0xFFFDF3D6),
-        Heading ="Banner heading" , image = R.drawable.caution,
+    AnchoredMultiLineToast(type = ToastType.CAUTION,
+        ToastColor = Color(0xFFFDF3D6),
+        Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
         HeadingColor =Color(0xFF92761D),
@@ -343,8 +477,9 @@ private fun Preview10() {
 @Preview
 @Composable
 private fun Preview11() {
-    FloatingOneLineToast(ToastColor = Color(0xFFFDF3D6),
-        Heading ="Message" , image =R.drawable.caution,
+    FloatingOneLineToast(type = ToastType.CAUTION,
+        ToastColor = Color(0xFFFDF3D6),
+        Heading ="Message" ,
         HeadingColor =Color(0xFF92761D),
         CloseButtonColor =Color(0xFF624E13))
 }
@@ -353,18 +488,19 @@ private fun Preview11() {
 @Preview
 @Composable
 private fun Preview12(){
-    AnchoredOneLineToast(ToastColor = Color(0xFFFDF3D6),
-        Heading ="Message" , image =R.drawable.caution,
+    AnchoredOneLineToast(type = ToastType.CAUTION, ToastColor = Color(0xFFFDF3D6),
+        Heading ="Message" ,
         HeadingColor =Color(0xFF92761D),
         CloseButtonColor =Color(0xFF624E13))
 }
 
-
+//
 @Preview
 @Composable
 private fun Preview13() {
-    FloatingMultiLineToast(ToastColor = Color(0xFFF3D4D9),
-        Heading ="Banner heading" , image = R.drawable.crossred,
+    FloatingMultiLineToast(type = ToastType.FAILED,
+        ToastColor = Color(0xFFF3D4D9),
+        Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
         HeadingColor =Color(0xFFC42742),
@@ -375,8 +511,8 @@ private fun Preview13() {
 @Preview
 @Composable
 private fun Preview14() {
-    AnchoredMultiLineToast(ToastColor = Color(0xFFF3D4D9),
-        Heading ="Banner heading" , image = R.drawable.crossred,
+    AnchoredMultiLineToast(type = ToastType.FAILED, ToastColor = Color(0xFFF3D4D9),
+        Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
         HeadingColor =Color(0xFFC42742),
@@ -387,8 +523,8 @@ private fun Preview14() {
 @Preview
 @Composable
 private fun Preview15() {
-    FloatingOneLineToast(ToastColor = Color(0xFFF3D4D9),
-        Heading ="Message" , image =R.drawable.crossred,
+    FloatingOneLineToast(type = ToastType.FAILED, ToastColor = Color(0xFFF3D4D9),
+        Heading ="Message" ,
         HeadingColor =Color(0xFFC42742),
         CloseButtonColor =Color(0xFF9D1F35))
 }
@@ -397,8 +533,10 @@ private fun Preview15() {
 @Preview
 @Composable
 private fun Preview16(){
-    AnchoredOneLineToast(ToastColor = Color(0xFFF3D4D9),
-        Heading ="Message" , image =R.drawable.crossred,
+    AnchoredOneLineToast(type = ToastType.FAILED,
+        ToastColor = Color(0xFFF3D4D9),
+        Heading ="Message" ,
         HeadingColor =Color(0xFFC42742),
         CloseButtonColor =Color(0xFF9D1F35))
 }
+
