@@ -13,9 +13,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Project2Theme {
+
                 Screen1(screen1ViewModel = Screen1ViewModel())
-            }
+
         }
     }
 }

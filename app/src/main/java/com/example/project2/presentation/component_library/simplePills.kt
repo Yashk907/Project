@@ -21,13 +21,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project2.R
 
+class simplePill(){
+    val bgcolor =Color(0xFF322B47)
+    val bordercolor =Color(0xFF61587A)
+}
 //simple pill with No icon
 @Preview
 @Composable
 private fun Preview() {
     SimplePillWithNoIcon(text = "Buy",
-        bordercolor = Color(0xFF61587A),
-        pillColor = Color(0xFF322B47))
+        bordercolor = simplePill().bordercolor,
+        pillColor = simplePill().bgcolor)
 }
 @Composable
 fun SimplePillWithNoIcon(
@@ -59,9 +63,9 @@ fun SimplePillWithNoIcon(
 @Composable
 private fun Preview2() {
     SimplePill(text = "Buy",
-        bordercolor = Color(0xFF61587A),
+        bordercolor = simplePill().bordercolor,
         Icon =R.drawable.phone,
-        pillColor = Color(0xFF322B47))
+        pillColor = simplePill().bgcolor)
 }
 @Composable
 fun SimplePill(

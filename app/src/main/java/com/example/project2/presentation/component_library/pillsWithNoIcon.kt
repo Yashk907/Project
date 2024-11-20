@@ -39,14 +39,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project2.R
 
+class filledPillNoIcon(){
+    val pillColor =Color(0xFF322B47)
+    val bordercolor =Color(0xFF61587A)
+    val tagcolor =Color(0xFFD05268)
+}
 //Pills with LeadingIcon(rupees)
 @Preview
 @Composable
 private fun Preview() {
     FilledPillWithNIcon(Price = 1,
         text = "gm",
-        bordercolor = Color(0xFF61587A),
-        pillColor = Color(0xFF322B47))
+        bordercolor =filledPillNoIcon().bordercolor ,
+        pillColor = filledPillNoIcon().pillColor)
 
 }
 
@@ -86,11 +91,11 @@ fun FilledPillWithNIcon(
 @Composable
 private fun Preview3() {
     pillWithTagNoIcon(Price = 1,
-        bordercolor = Color(0xFF61587A),
-        pillColor = Color(0xFF322B47),
+        bordercolor = filledPillNoIcon().bordercolor,
+        pillColor = filledPillNoIcon().pillColor,
         text = "gm",
         tagText = "OUT OF STOCK",
-        tagbgcolor = Color(0xFFD05268))
+        tagbgcolor = filledPillNoIcon().tagcolor)
 }
 
 @Composable

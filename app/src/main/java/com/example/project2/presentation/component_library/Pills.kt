@@ -39,12 +39,28 @@ import androidx.compose.ui.unit.sp
 import com.example.project2.R
 
 //Pills with LeadingIcon(rupees)
+
+class ColorPills(){
+    //filledPill
+    val filledPillBorderColor1 =Color(0xFF61587A)
+    val filledPillBorderColor2 =Color(0xFF8D54D6)
+
+    val filledPillColor1=Color(0xFF322B47)
+    val filledPillColor2=Color(0xFF8D54D6)
+
+    //filledpill with tag
+    val filledPillWithTagColor =  Color(0xFF322B47)
+    val filledPillBorderWithTagColor = Color(0xFF61587A)
+    val filledPillTagColor =Color(0xFF7029CC)
+    
+
+}
 @Preview
 @Composable
 private fun Preview() {
    FilledPill(Price = 40,
-        bordercolor = Color(0xFF61587A),
-        pillColor = Color(0xFF322B47))
+        bordercolor = ColorPills().filledPillBorderColor1,
+        pillColor = ColorPills().filledPillColor1)
 
 }
 
@@ -83,7 +99,8 @@ fun FilledPill(
 @Preview
 @Composable
 private fun Preview2() {
-   FilledPill(pillColor = Color(0xFF8D54D6), bordercolor =  Color(0xFF8D54D6),
+   FilledPill(pillColor = ColorPills().filledPillColor2,
+       bordercolor = ColorPills().filledPillBorderColor2 ,
         Price =40 )
 }
 
@@ -92,10 +109,10 @@ private fun Preview2() {
 @Composable
 private fun Preview3() {
     pillWithTag(Price = 40,
-        bordercolor = Color(0xFF61587A),
-        pillColor = Color(0xFF322B47),
+        bordercolor = ColorPills().filledPillBorderWithTagColor,
+        pillColor =ColorPills().filledPillWithTagColor,
         tagText = "POPULAR",
-        tagbgcolor = Color(0xFF7029CC))
+        tagbgcolor =ColorPills().filledPillTagColor )
 }
 
 @Composable
