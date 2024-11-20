@@ -27,6 +27,9 @@ import com.example.project2.R
 
 //Chips
 
+class Colorchips(){
+
+}
 enum class StumatoChipType(){
     SUCCESS,
     PROCESSING,

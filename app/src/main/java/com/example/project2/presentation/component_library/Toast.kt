@@ -37,6 +37,28 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project2.R
 
+class Color(){
+    //Colors For Toast
+    val GreenToastColor =Color(0xFFD4F5E2)
+    val PurpleToastColor =Color(0xFFE2D4F5)
+    val yellowToastColor = Color(0xFFFDF3D6)
+    val redToastColor =Color(0xFFF3D4D9)
+
+    //Heading Colors
+     val greenHeadingColor=Color(0xFF21A357)
+     val purpleHeadingColor=Color(0xFF5A21A3)
+     val yellowHeadingColor=Color(0xFF92761D)
+     val redHeadingColor=Color(0xFFC42742)
+
+    //Description Color
+
+    val greenDescriptionColor= Color(0xFF197A41)
+    val purpleDescriptionColor=Color(0xFF43197A)
+    val yellowDescriptionColor=Color(0xFF624E13)
+    val redDescriptionColor=Color(0xFF9D1F35)
+
+
+}
 //Toast
 enum class ToastType(){
     SUCESS,
@@ -143,12 +165,12 @@ fun FloatingMultiLineToast(type: ToastType,
 @Composable
 private fun Preview1() {
     FloatingMultiLineToast(type = ToastType.SUCESS,
-        ToastColor = Color(0xFFD4F5E2),
+        ToastColor = Color().GreenToastColor,
         Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
-        HeadingColor =Color(0xFF21A357),
-        DescriptionColor = Color(0xFF197A41))
+        HeadingColor =Color().greenHeadingColor,
+        DescriptionColor = Color().greenDescriptionColor)
 }
 
 //Anchored multi line Toast
@@ -157,12 +179,12 @@ private fun Preview1() {
 private fun Preview2() {
     AnchoredMultiLineToast(
         type = ToastType.SUCESS,
-        ToastColor = Color(0xFFD4F5E2),
+        ToastColor = Color().GreenToastColor,
         Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
-        HeadingColor =Color(0xFF21A357),
-        DescriptionColor = Color(0xFF197A41))
+        HeadingColor =Color().greenHeadingColor,
+        DescriptionColor = Color().greenDescriptionColor)
 }
 
 @Composable
@@ -256,10 +278,10 @@ fun AnchoredMultiLineToast(type: ToastType,
 @Composable
 private fun Preview3() {
     FloatingOneLineToast(type = ToastType.SUCESS,
-        ToastColor = Color(0xFFD4F5E2),
+        ToastColor = Color().GreenToastColor,
         Heading ="Message" ,
-        HeadingColor =Color(0xFF21A357),
-        CloseButtonColor = Color(0xFF197A41))
+        HeadingColor =Color().greenHeadingColor,
+        CloseButtonColor = Color().greenDescriptionColor)
 }
 
 @Composable
@@ -330,10 +352,10 @@ fun FloatingOneLineToast(type : ToastType,
 @Composable
 private fun Preview4() {
     AnchoredOneLineToast(ToastType.SUCESS,
-        ToastColor = Color(0xFFD4F5E2),
+        ToastColor = Color().GreenToastColor,
         Heading ="Message" ,
-        HeadingColor =Color(0xFF21A357),
-        CloseButtonColor = Color(0xFF197A41))
+        HeadingColor =Color().greenHeadingColor,
+        CloseButtonColor = Color().greenDescriptionColor)
 }
 
 @Composable
@@ -406,34 +428,36 @@ fun AnchoredOneLineToast(type : ToastType,
 @Composable
 private fun Preview5() {
     FloatingMultiLineToast(type = ToastType.INFORMATION,
-        ToastColor = Color(0xFFE2D4F5),
+        ToastColor = Color().PurpleToastColor,
         Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
-        HeadingColor =Color(0xFF5A21A3),
-        DescriptionColor = Color(0xFF43197A))
+        HeadingColor =Color().purpleHeadingColor,
+        DescriptionColor = Color().purpleDescriptionColor)
 }
 
 //Anchored multi line Toast
 @Preview
 @Composable
 private fun Preview6() {
-    AnchoredMultiLineToast(type = ToastType.INFORMATION, ToastColor = Color(0xFFE2D4F5),
+    AnchoredMultiLineToast(type = ToastType.INFORMATION,
+        ToastColor = Color().PurpleToastColor,
         Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
-        HeadingColor =Color(0xFF5A21A3),
-        DescriptionColor = Color(0xFF43197A))
+        HeadingColor =Color().purpleHeadingColor,
+        DescriptionColor = Color().purpleDescriptionColor)
 }
 
 //Floating One line Toast
 @Preview
 @Composable
 private fun Preview7() {
-    FloatingOneLineToast(type = ToastType.INFORMATION, ToastColor = Color(0xFFE2D4F5),
+    FloatingOneLineToast(type = ToastType.INFORMATION,
+        ToastColor = Color().PurpleToastColor,
         Heading ="Message" ,
-        HeadingColor =Color(0xFF5A21A3),
-        CloseButtonColor  = Color(0xFF43197A))
+        HeadingColor =Color().purpleHeadingColor,
+        CloseButtonColor  = Color().purpleDescriptionColor)
 }
 
 //Anchored One line Toast
@@ -441,10 +465,10 @@ private fun Preview7() {
 @Composable
 private fun Preview8() {
     AnchoredOneLineToast(type = ToastType.INFORMATION,
-        ToastColor = Color(0xFFE2D4F5),
+        ToastColor = Color().PurpleToastColor,
         Heading ="Message" ,
-        HeadingColor =Color(0xFF5A21A3),
-        CloseButtonColor  = Color(0xFF43197A))
+        HeadingColor =Color().purpleHeadingColor,
+        CloseButtonColor  = Color().purpleDescriptionColor)
 }
 
 
@@ -452,12 +476,12 @@ private fun Preview8() {
 @Composable
 private fun Preview9() {
     FloatingMultiLineToast(type = ToastType.CAUTION,
-        ToastColor = Color(0xFFFDF3D6),
+        ToastColor = Color().yellowToastColor,
         Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
-        HeadingColor =Color(0xFF92761D),
-        DescriptionColor = Color(0xFF624E13))
+        HeadingColor =Color().yellowHeadingColor,
+        DescriptionColor = Color().yellowDescriptionColor)
 }
 
 //Anchored multi line Toast
@@ -465,12 +489,12 @@ private fun Preview9() {
 @Composable
 private fun Preview10() {
     AnchoredMultiLineToast(type = ToastType.CAUTION,
-        ToastColor = Color(0xFFFDF3D6),
+        ToastColor = Color().yellowToastColor,
         Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
-        HeadingColor =Color(0xFF92761D),
-        DescriptionColor = Color(0xFF624E13))
+        HeadingColor =Color().yellowHeadingColor,
+        DescriptionColor = Color().yellowDescriptionColor)
 }
 
 //Floating One line Toast
@@ -478,20 +502,21 @@ private fun Preview10() {
 @Composable
 private fun Preview11() {
     FloatingOneLineToast(type = ToastType.CAUTION,
-        ToastColor = Color(0xFFFDF3D6),
+        ToastColor = Color().yellowToastColor,
         Heading ="Message" ,
-        HeadingColor =Color(0xFF92761D),
-        CloseButtonColor =Color(0xFF624E13))
+        HeadingColor =Color().yellowHeadingColor,
+        CloseButtonColor =Color().yellowDescriptionColor)
 }
 
 //Anchored One line Toast
 @Preview
 @Composable
 private fun Preview12(){
-    AnchoredOneLineToast(type = ToastType.CAUTION, ToastColor = Color(0xFFFDF3D6),
+    AnchoredOneLineToast(type = ToastType.CAUTION,
+        ToastColor = Color().yellowToastColor,
         Heading ="Message" ,
-        HeadingColor =Color(0xFF92761D),
-        CloseButtonColor =Color(0xFF624E13))
+        HeadingColor =Color().yellowHeadingColor,
+        CloseButtonColor =Color().yellowDescriptionColor)
 }
 
 //
@@ -499,34 +524,36 @@ private fun Preview12(){
 @Composable
 private fun Preview13() {
     FloatingMultiLineToast(type = ToastType.FAILED,
-        ToastColor = Color(0xFFF3D4D9),
+        ToastColor = Color().redToastColor,
         Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
-        HeadingColor =Color(0xFFC42742),
-        DescriptionColor = Color(0xFF9D1F35))
+        HeadingColor =Color().redHeadingColor,
+        DescriptionColor = Color().redDescriptionColor)
 }
 
 //Anchored multi line Toast
 @Preview
 @Composable
 private fun Preview14() {
-    AnchoredMultiLineToast(type = ToastType.FAILED, ToastColor = Color(0xFFF3D4D9),
+    AnchoredMultiLineToast(type = ToastType.FAILED,
+        ToastColor = Color().redToastColor,
         Heading ="Banner heading" ,
         Description = "You cannot make an internationnal transaction while your " +
                 "internation settings are turn off",
-        HeadingColor =Color(0xFFC42742),
-        DescriptionColor = Color(0xFF9D1F35))
+        HeadingColor =Color().redHeadingColor,
+        DescriptionColor = Color().redDescriptionColor)
 }
 
 //Floating One line Toast
 @Preview
 @Composable
 private fun Preview15() {
-    FloatingOneLineToast(type = ToastType.FAILED, ToastColor = Color(0xFFF3D4D9),
+    FloatingOneLineToast(type = ToastType.FAILED,
+        ToastColor = Color().redToastColor,
         Heading ="Message" ,
-        HeadingColor =Color(0xFFC42742),
-        CloseButtonColor =Color(0xFF9D1F35))
+        HeadingColor =Color().redHeadingColor,
+        CloseButtonColor =Color().redDescriptionColor)
 }
 
 //Anchored One line Toast
@@ -534,9 +561,9 @@ private fun Preview15() {
 @Composable
 private fun Preview16(){
     AnchoredOneLineToast(type = ToastType.FAILED,
-        ToastColor = Color(0xFFF3D4D9),
+        ToastColor = Color().redToastColor,
         Heading ="Message" ,
-        HeadingColor =Color(0xFFC42742),
-        CloseButtonColor =Color(0xFF9D1F35))
+        HeadingColor =Color().redHeadingColor,
+        CloseButtonColor =Color().redDescriptionColor)
 }
 
