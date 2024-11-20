@@ -30,8 +30,9 @@ import com.example.project2.R
 @Composable
 private fun Preview1() {
     successChipNoIcon(
-        LabelColor = Color(0xFF241F33),
-        textColor = Color(0xFF54D68A), text = "Success")
+        LabelColor = Colorchips().succesChipLabel,
+        textColor =Colorchips().successChipText,
+        text = "Success")
 }
 
 @Composable
@@ -58,8 +59,9 @@ fun successChipNoIcon(LabelColor : Color=Color.Transparent,
 @Preview
 @Composable
 private fun Preview2() {
-    InformationChipNoIcon(labelColor = Color(0xFF241F33),
-        textColor = Color(0xFF66B3FF), text = "Information")
+    InformationChipNoIcon(labelColor = Colorchips().infoChipLabel,
+        textColor = Colorchips().infoChipText,
+        text = "Information")
 }
 
 @Composable
@@ -86,8 +88,9 @@ fun InformationChipNoIcon(labelColor : Color=Color.Transparent,
 @Preview
 @Composable
 private fun Preview3() {
-    FailedChipNoIcon(LabelColor = Color(0xFF241F33),
-        textColor = Color(0xFFDC7D8E), text = "Failed")
+    FailedChipNoIcon(LabelColor = Colorchips().FailedChipLabel,
+        textColor = Colorchips().failedChipText,
+        text = "Failed")
 }
 
 @Composable
@@ -114,9 +117,9 @@ fun FailedChipNoIcon(LabelColor : Color=Color.Transparent,
 @Preview
 @Composable
 private fun Preview4() {
-    ProcesschipNoIcon(LabelColor = Color(0xFF241F33),
+    ProcesschipNoIcon(LabelColor = Colorchips().ProcessingChipLabel,
         text ="Processing" ,
-        textColor = Color(0xFFFFAD5C),
+        textColor = Colorchips().processingChipText,
          )
 }
 
@@ -148,7 +151,8 @@ fun ProcesschipNoIcon(LabelColor : Color=Color.Transparent,
 @Composable
 private fun Preview5() {
     successChipNoIcon(
-        textColor = Color(0xFF54D68A), text = "Success")
+        textColor = Colorchips().successChipText,
+        text = "Success")
 }
 
 //informationChip with transparent back
@@ -156,14 +160,14 @@ private fun Preview5() {
 @Composable
 private fun Preview6() {
     InformationChipNoIcon(
-        textColor = Color(0xFF66B3FF), text = "Information")
+        textColor = Colorchips().infoChipText, text = "Information")
 }
 //Failed chip with transparent back
 @Preview
 @Composable
 private fun Preview7() {
     FailedChipNoIcon(
-        textColor = Color(0xFFDC7D8E), text = "Failed")
+        textColor = Colorchips().failedChipText, text = "Failed")
 }
 
 //Progress chip with transparent back
@@ -172,5 +176,5 @@ private fun Preview7() {
 private fun Preview8() {
     ProcesschipNoIcon(
         text ="Processing" ,
-        textColor = Color(0xFFFFAD5C))
+        textColor = Colorchips().processingChipText)
 }

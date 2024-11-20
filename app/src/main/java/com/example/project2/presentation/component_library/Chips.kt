@@ -28,7 +28,26 @@ import com.example.project2.R
 //Chips
 
 class Colorchips(){
+    //labelColor
+    val succesChipLabel =Color(0xFF241F33)
+    val infoChipLabel =Color(0xFF241F33)
+    val FailedChipLabel =Color(0xFF241F33)
+    val ProcessingChipLabel =Color(0xFF241F33)
 
+    //TextColor
+    val successChipText =  Color(0xFF54D68A)
+    val infoChipText = Color(0xFF66B3FF)
+    val failedChipText =Color(0xFFDC7D8E)
+    val processingChipText = Color(0xFFFFAD5C)
+
+    //icontint
+    val successChipIconTint =  Color(0xFF54D68A)
+    val infoChipIconTint = Color(0xFF66B3FF)
+    val failedChipIconTint =Color(0xFFDC7D8E)
+
+
+    //Loader Color for processing
+    val processingChipLoader = Color(0xFFFFAD5C)
 }
 enum class StumatoChipType(){
     SUCCESS,
@@ -119,10 +138,10 @@ fun StumatoChip(type : StumatoChipType,
 private fun PreviewSuccessChipWithBackground() {
     StumatoChip(
         type = StumatoChipType.SUCCESS,
-        labelColor = Color(0xFF241F33),
+        labelColor = Colorchips().succesChipLabel,
         text = "Success",
-        iconTint = Color(0xFF54D68A),
-        textColor = Color(0xFF54D68A)
+        iconTint = Colorchips().successChipIconTint,
+        textColor =Colorchips().successChipText
     )
 }
 
@@ -131,10 +150,10 @@ private fun PreviewSuccessChipWithBackground() {
 private fun PreviewInformationChipWithBackground() {
     StumatoChip(
         type = StumatoChipType.INFORMATION,
-        labelColor = Color(0xFF241F33),
+        labelColor = Colorchips().infoChipLabel,
         text = "Information",
-        iconTint = Color(0xFF66B3FF),
-        textColor = Color(0xFF66B3FF)
+        iconTint = Colorchips().infoChipIconTint,
+        textColor =Colorchips().infoChipText
     )
 }
 
@@ -143,10 +162,10 @@ private fun PreviewInformationChipWithBackground() {
 private fun PreviewFailedChipWithBackground() {
     StumatoChip(
         type = StumatoChipType.FAILED,
-        labelColor = Color(0xFF241F33),
+        labelColor = Colorchips().FailedChipLabel,
         text = "Failed",
-        iconTint = Color(0xFFDC7D8E),
-        textColor = Color(0xFFDC7D8E)
+        iconTint = Colorchips().failedChipIconTint,
+        textColor = Colorchips().failedChipText
     )
 }
 
@@ -155,12 +174,12 @@ private fun PreviewFailedChipWithBackground() {
 private fun PreviewProcessChipWithBackground() {
     StumatoChip(
         type = StumatoChipType.PROCESSING,
-        labelColor = Color(0xFF241F33),
+        labelColor =Colorchips().ProcessingChipLabel,
         text = "Processing",
         iconTint = Color.Transparent,
-        textColor = Color(0xFFFFAD5C),
+        textColor =Colorchips().processingChipText,
         showIndicator = true,
-        loaderColor = Color(0xFFFFAD5C)
+        loaderColor = Colorchips().processingChipLoader
     )
 }
 
@@ -171,8 +190,8 @@ private fun PreviewSuccessChipWithoutBackground() {
         type = StumatoChipType.SUCCESS,
         labelColor = Color.Transparent,
         text = "Success",
-        iconTint = Color(0xFF54D68A),
-        textColor = Color(0xFF54D68A)
+        iconTint = Colorchips().successChipIconTint,
+        textColor = Colorchips().successChipText,
     )
 }
 
@@ -183,8 +202,8 @@ private fun PreviewInformationChipWithoutBackground() {
         type = StumatoChipType.INFORMATION,
         labelColor = Color.Transparent,
         text = "Information",
-        iconTint = Color(0xFF66B3FF),
-        textColor = Color(0xFF66B3FF)
+        iconTint =Colorchips().infoChipIconTint,
+        textColor =Colorchips().infoChipText
     )
 }
 
@@ -195,8 +214,8 @@ private fun PreviewFailedChipWithoutBackground() {
         type = StumatoChipType.FAILED,
         labelColor = Color.Transparent,
         text = "Failed",
-        iconTint = Color(0xFFDC7D8E),
-        textColor = Color(0xFFDC7D8E)
+        iconTint = Colorchips().failedChipIconTint,
+        textColor =Colorchips().failedChipText,
     )
 }
 
@@ -208,9 +227,9 @@ private fun PreviewProcessChipWithoutBackground() {
         labelColor = Color.Transparent,
         text = "Processing",
         iconTint = Color.Transparent,
-        textColor = Color(0xFFFFAD5C),
+        textColor = Colorchips().processingChipText,
         showIndicator = true,
-        loaderColor = Color(0xFFFFAD5C)
+        loaderColor = Colorchips().processingChipLoader
     )
 }
 
@@ -221,8 +240,8 @@ private fun PreviewClickableChip() {
         type = StumatoChipType.SUCCESS,
         labelColor = Color.Transparent,
         text = "Clickable Success",
-        iconTint = Color(0xFF54D68A),
-        textColor = Color(0xFF54D68A),
+        iconTint = Colorchips().successChipIconTint,
+        textColor = Colorchips().successChipText,
         onClick = { /* Handle click */ }
     )
 }
@@ -234,8 +253,8 @@ private fun PreviewCustomFontSizeChip() {
         type = StumatoChipType.INFORMATION,
         labelColor = Color.Transparent,
         text = "Large Text",
-        iconTint = Color(0xFF66B3FF),
-        textColor = Color(0xFF66B3FF),
+        iconTint = Colorchips().infoChipIconTint,
+        textColor = Colorchips().infoChipText,
         fontSize = 14.sp
     )
 }
